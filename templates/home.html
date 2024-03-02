@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Hello World</h2>
+    
+    {% comment %} {% for x in object_list %}
+    <h3>{{ x.children.all }}</h3>
+    {% endfor %} {% endcomment %}
+        
+
+
+    <hr>
+    <ul>
+    {% for i in catg %}
+    <!-- <h3>{{ x.children.all }}</h3> -->
+    <!-- <h3>{{ x.paret }}</h3> -->
+    <!-- <hr> -->
+    {% if not i.children.all %}
+
+    
+        <li><h3>{{ i.title }}</h3></li>
+    {% else %}
+        <li><h3>{{ i.title }}</h3></li>
+        <ul>
+        {% for obj in i.children.all %}
+            
+            {% if not obj.children.all %}
+                <li><h3>{{ obj.title }}</h3></li>
+
+            {% else %}
+                <li><h3>{{ obj.title }}</h3></li>
+                <ul>
+                {% for subobj in obj.children.all %}
+                    <li><h3>{{ subobj.title }}</h3></li>
+                    
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endfor %}
+        </ul>
+    {% endif %}
+    {% endfor %}
+    </ul>
+    
+</body>
+</html>
